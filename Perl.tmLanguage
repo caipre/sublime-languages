@@ -1,0 +1,333 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>fileTypes</key>
+	<array>
+		<string>pl</string>
+		<string>pm</string>
+	</array>
+
+	<key>firstLineMatch</key>
+	<string>^#!.*\bperl\b</string>
+
+	<key>foldingStartMarker</key>
+	<string>.</string>
+
+	<key>foldingStopMarker</key>
+	<string>.</string>
+
+	<key>name</key>
+	<string>Perl</string>
+
+	<key>scopeName</key>
+	<string>source.perl</string>
+
+	<key>uuid</key>
+	<string>491AB614-A9F1-4733-ADC1-2F33213E87F7</string>
+
+	/* Syntax Patterns
+	 * ================================== */
+	<key>patterns</key>
+	<array>
+		/* Comments */
+		<dict>
+			<key>name</key>
+			<string>comment.other.first-line.perl</string>
+			<key>match</key>
+			<string>#!.*\bperl\b$</string>
+		</dict>
+
+		<dict>
+			<key>name</key>
+			<string>comment.line.number-sign.perl</string>
+			<key>match</key>
+			<string>#.*</string>
+		</dict>
+
+
+
+		/* Keywords */
+		<dict>
+			<key>name</key>
+			<string>keyword.control.perl</string>
+			<key>match</key>
+			<string>\b(BEGIN|continue|die|do|else|elsif|exit|for|foreach|goto|if|last|next|package|redo|return|require|select|use|unless|until|wait|while)\b</string>
+		</dict>
+
+		<dict>
+			<key>name</key>
+			<string>keyword.operator.perl</string>
+			<key>match</key>
+			<string>(->|\+\+|--|\*\*|&amp;&amp;|=>)</string>
+		</dict>
+
+		<dict>
+			<key>name</key>
+			<string>keyword.function.perl</string>
+			<key>match</key>
+			<string>\b(atan2|bind|binmode|bless|caller|chdir|chmod|chomp|chop|chorn|chr|chroot|clos|closedir|connect|cos|crypt|dbmclose|dbmopen|defined|delete|dump|each|endgrent|endhostent|endnetent|endprotoent|endpwent|endservent|eof|eval|exec|exists|exp|fcntl|fileno|flock|fork|format|formline|getc|getgrent|getppid|getpriority|getprotobyname|getprotobynumber|getprotoent|getpwent|getpwnam|getpwuid|getservbyname|getservbyport|getservent|getsockname|getsockopt|glob|gmtime|grep|hex|import|index|int|ioctl|join|keys|kill|lc|lcfirst|length|link|listen|local|localtime|log|lstat|m|map|mkdir|msgctl|msgget|msgrcv|msgsnd|no|oct|open|opendir|ord|pack|pipe|pop|pos|print|printf|push|q|quotemeta|qx|rand|read|readdir|readlink|recv|ref|rename|reset|reverse|rewinddir|rindex|rmdir|s|scalar|seek|seekdir|semctl|semget|semop|send|setgrent|sethostent|setnetent|setpgrp|setpriority|setprotoent|setpwent|setservent|setsockopt|shift|shmctl|shmget|shmread|shmwrite|shutdown|sin|sleep|socket|socketpair|sort|splice|split|sprintf|sqrt|srand|stat|study|substr|symlink|syscall|sysopen|sysread|system|syswrite|tell|telldir|tie|tied|time|times|tr|truncate|uc|ucfirst|umask|undef|unlink|unpack|unshift|untie|utime|values|vec|waitpid|wantarray|warn|write|y)\b</string>
+		</dict>
+
+		<dict>
+			<key>name</key>
+			<string>keyword.other.system.perl</string>
+			<key>match</key>
+			<string>\b(ARGV|DATA|ENV|SIG|STDERR|STDIN|STDOUT)\b</string>
+		</dict>
+
+
+
+		/* Strings */
+		<dict>
+			<key>name</key>
+			<string>string.quoted.single.perl</string>
+			<key>begin</key>
+			<string>'</string>
+			<key>end</key>
+			<string>'</string>
+		</dict>
+
+		<dict>
+			<key>name</key>
+			<string>string.quoted.double.perl</string>
+			<key>begin</key>
+			<string>"</string>
+			<key>end</key>
+			<string>"</string>
+			<key>patterns</key>
+			<array>
+				<dict>
+					<key>include</key>
+					<string>#variable</string>
+				</dict>
+			</array>
+		</dict>
+
+		<dict>
+			<key>name</key>
+			<string>string.quoted.other.qq.perl</string>
+			<key>begin</key>
+			<string>\b(qq)\s*\{</string>
+			<key>beginCaptures</key>
+			<dict>
+				<key>1</key>
+				<dict>
+					<key>name</key>
+					<string>keyword.function.perl</string>
+				</dict>
+			</dict>
+
+			<key>end</key>
+			<string>\}</string>
+			<key>patterns</key>
+			<array>
+				<dict>
+					<key>include</key>
+					<string>#nested_braces</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#variable</string>
+				</dict>
+			</array>
+		</dict>
+		
+
+
+
+		/* Variables */
+		<dict>
+			<key>patterns</key>
+			<array>
+				<dict>
+					<key>include</key>
+					<string>#variable</string>
+				</dict>
+			</array>
+		</dict>
+
+		<dict>
+			<key>name</key>
+			<string>storage.modifier</string>
+			<key>match</key>
+			<string>\b(my|our|constant)\b</string>
+		</dict>
+
+
+
+		/* Constants */
+		<dict>
+			<key>name</key>
+			<string>constant.other.bareword.perl</string>
+			<key>match</key>
+			<string>(?&lt;={)\s*\w+\s*(?=})</string>
+		</dict>
+
+		<dict>
+			<key>name</key>
+			<string>constant.other.bareword.perl</string>
+			<key>match</key>
+			<string>\b\w+\s*(?==&gt;)</string>
+		</dict>
+
+		<dict>
+			<key>name</key>
+			<string>constant.other.bareword.perl</string>
+			<key>begin</key>
+			<string>\b(qw)\s*(.)</string>
+			<key>beginCaptures</key>
+			<dict>
+				<key>1</key>
+				<dict>
+					<key>name</key>
+					<string>keyword.function.perl</string>
+				</dict>
+				<key>2</key>
+				<dict>
+					<key>name</key>
+					<string>source.clean.perl</string>
+				</dict>
+			</dict>
+			
+			<key>end</key>
+			<string>(\1|\)|\}|\])</string>
+			<key>endCaptures</key>
+			<dict>
+				<key>1</key>
+				<dict>
+					<key>name</key>
+					<string>source.clean.perl</string>
+				</dict>
+			</dict>
+		</dict>
+		
+		
+
+		/* Regex */
+		<dict>
+			<key>name</key>
+			<string>string.regexp.find.perl</string>
+			<key>begin</key>
+			<string>(=~)\s*[ms]?([^\w])</string>
+			<key>beginCaptures</key>
+			<dict>
+				<key>1</key>
+				<dict>
+					<key>name</key>
+					<string>keyword.operator.perl</string>
+				</dict>
+			</dict>
+
+			<key>end</key>
+			<string>\2([cgimosx]*)</string>
+			<key>endCaptures</key>
+			<dict>
+				<key>1</key>
+				<dict>
+					<key>name</key>
+					<string>keyword.control.regexp-option.perl</string>
+				</dict>
+			</dict>
+		</dict>
+
+		<dict>
+			<key>name</key>
+			<string>string.regexp.match.perl</string>
+			<key>begin</key>
+			<string>\b(m)\s*(?&lt;!\\)[\(]</string>
+			<key>end</key>
+			<string>\)</string>
+		</dict>
+		
+	</array>
+
+	/* Repository
+	* ================================== */
+	<key>repository</key>
+	<dict>
+		<key>nested_braces</key>
+		<dict>
+			<key>begin</key>
+			<string>\{</string>
+			<key>end</key>
+			<string>\}</string>
+			<key>patterns</key>
+			<array>
+				<dict>
+					<key>include</key>
+					<string>#nested_braces</string>
+				</dict>
+			</array>
+		</dict>
+
+		<key>variable</key>
+		<dict>
+			<key>patterns</key>
+			<array>
+				<dict>
+					<key>name</key>
+					<string>variable.other.scalar.perl</string>
+					<key>match</key>
+					<string>\$(\w|::)+</string>
+				</dict>
+
+				<dict>
+					<key>match</key>
+					<string>(\$){?(?=(?:[@%]|(?=\w+::)))</string>
+					<key>captures</key>
+					<dict>
+						<key>1</key>
+						<dict>
+							<key>name</key>
+							<string>variable.other.scalar.perl</string>
+						</dict>
+					</dict>
+				</dict>
+
+				<dict>
+					<key>name</key>
+					<string>variable.other.array.perl</string>
+					<key>match</key>
+					<string>@(\w|::)+</string>
+				</dict>
+
+				<dict>
+					<key>match</key>
+					<string>(@){?(?=(?:[$%]|(?=\w+::)))</string>
+					<key>captures</key>
+					<dict>
+						<key>1</key>
+						<dict>
+							<key>name</key>
+							<string>variable.other.array.perl</string>
+						</dict>
+					</dict>
+				</dict>
+
+				<dict>
+					<key>name</key>
+					<string>variable.other.hash.perl</string>
+					<key>match</key>
+					<string>%(\w|::)+</string>
+				</dict>
+
+				<dict>
+					<key>match</key>
+					<string>(%){?(?=(?:[$@]|(?=\w+::)))</string>
+					<key>captures</key>
+					<dict>
+						<key>1</key>
+						<dict>
+							<key>name</key>
+							<string>variable.other.hash.perl</string>
+						</dict>
+					</dict>
+				</dict>
+			</array>
+		</dict>
+
+	</dict>
+			
+</dict>
+</plist>
