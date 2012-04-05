@@ -11,7 +11,7 @@ specification. This is sensible since it means existing themes will support the 
 definitions. The specification is vague for some situations, and there I will use my best judgment.
 [1]: http://manual.macromates.com/en/language_grammars "Textmate language grammars"
 
-### Languages
+### Available
 * Perl
 
 ### Planned
