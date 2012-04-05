@@ -12,10 +12,7 @@ definitions. The specification is vague for some situations, and there I will us
 [1]: http://manual.macromates.com/en/language_grammars "Textmate language grammars"
 
 ### Languages
-
-#### Perl (alpha)
-
-* Limited regex support
+* Perl
 
 ### Planned
 * HTML
