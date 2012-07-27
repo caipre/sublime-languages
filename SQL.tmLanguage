@@ -1,0 +1,233 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>fileTypes</key>
+	<array>
+		<string>sql</string>
+		<string>ddl</string>
+		<string>dml</string>
+	</array>
+
+	<key>foldingStartMarker</key>
+	<string>\s+\(\s*$</string>
+
+	<key>foldingStopMarker</key>
+	<string>^\s*\)</string>
+
+	<key>name</key>
+	<string>SQL</string>
+
+	<key>scopeName</key>
+	<string>source.sql</string>
+
+	<key>uuid</key>
+	<string>a7578086-6d72-4ede-a7f0-7dd0e5805d1b</string>
+
+
+
+
+
+	/* Syntax Patterns
+	 * ================================== */
+	<key>patterns</key>
+	<array>
+
+		<dict> /* Keywords */
+			<key>include</key>
+			<string>#keywords</string>
+		</dict>
+
+		<dict> /* Strings */
+			<key>include</key>
+			<string>#string_single_quotes</string>
+		</dict>
+
+		<dict> /* Schema */
+			<key>include</key>
+			<string>#schema</string>
+		</dict>
+
+		<dict> /* Constants */
+			<key>include</key>
+			<string>#numbers</string>
+		</dict>
+
+		<dict> /* Comments */
+			<key>include</key>
+			<string>#comments</string>
+		</dict>
+
+	</array>
+
+
+
+
+
+	/* Repository
+	* ================================== */
+
+	<key>repository</key>
+	<dict>
+
+		/* Comments */
+		<key>comments</key>
+		<dict>
+			<key>patterns</key>
+			<array>
+				<dict> /* line */
+					<key>name</key>
+					<string>comment.line.double-dash.sql</string>
+					<key>match</key>
+					<string>--.*$</string>
+				</dict>
+
+				<dict> /* block */
+					<key>name</key>
+					<string>comment.block.sql</string>
+					<key>begin</key>
+					<string>/\*</string>
+					<key>end</key>
+					<string>\*/</string>
+				</dict>
+			</array>
+		</dict>
+
+		/* Constants */
+		<key>numbers</key>
+		<dict>
+			<key>name</key>
+			<string>constant.numeric.sql</string>
+			<key>match</key>
+			<string>\b\d+(.\d+)+\b</string>
+		</dict>
+
+		/* Keywords */
+		<key>keywords</key>
+		<dict>
+			<key>patterns</key>
+			<array>
+				<dict> /* aggregate functions */
+					<key>name</key>
+					<string>keyword.other.aggregate-function.sql</string>
+					<key>match</key>
+					<string>\b(avg|collect|corr|count|covar_pop|covar_samp|cume_dist|dense_rank|first|group_id|grouping|grouping_id|keep|last|listagg|max|median|min|percent_rank|percentile_cont|percentile_disc|rank|regr_slope|regr_intercept|regr_count|regr_r2|regr_avgx|regr_avgy|regr_sxx|regr_syy|regr_sxy|stats_binomial_test|stats_crosstab|stats_f_test|stats_ks_test|stats_mode|stats_mw_test|stats_one_way_anova|stats_t_test_one|stats_t_test_paired|stats_t_test_indep|stats_t_test_indepu|stats_wsr_test|stddev|stddev_pop|stddev_samp|sum|sys_xmlagg|var_pop|var_samp|variance|xmlagg)\b</string>
+				</dict>
+
+				<dict> /* data manipulation */
+					<key>name</key>
+					<string>keyword.other.dml.sql</string>
+					<key>match</key>
+					<string>(?i:(delete\s+from|group\s+by|(inner|cross)\s+join|insert\s+(ignore\s+)?into|(left|right)\s+(outer\s+)?join|limit|natural\s+((left|right)\s+)?(outer\s+)?join|order\sby|select(\s+distinct)?|set|straight_join|update|where))</string>
+				</dict>
+
+				<dict>
+					<key>name</key>
+					<string>keyword.other.dml.sql</string>
+					<key>match</key>
+					<string>\b(access|add|all|alter|any|audit|char|check|cluster|column|comment|compress|connect|create|current|date|decimal|default|delete|distinct|drop|else|exclusive|exists|file|float|for|from|grant|group by|having|identified|immediate|increment|index|initial|inner join|insert|integer|intersect|into|is|level|lock|long|maxextents|minus|mlslabel|mode|modify|noaudit|nocompress|nowait|number|of|offline|on|online|option|order by|((left|right|full) )?outer join|pctfree|prior|privileges|public|raw|rename|resource|revoke|row|rowid|rownum|rows|select|session|set|share|size|smallint|start|successful|synonym|sysdate|table|then|to_(char|date)|trigger|uid|union|unique|update|user|validate|values|varchar|varchar2|view|whenever|where|with)\b</string>
+				</dict>
+
+				<dict> /* operators */
+					<key>name</key>
+					<string>keyword.operator.sql</string>
+					<key>match</key>
+					<string>\b(and|as|asc|between|desc|like|or|not|null|in)\b</string>
+				</dict>
+			</array>
+		</dict>
+
+		/* Schema */
+		<key>schema</key>
+		<dict>
+			<key>patterns</key>
+			<array>
+				<dict> /* schema */
+					<key>match</key>
+					<string>([A-Za-z0-9_\$#]{1,30})([A-Za-z0-9_\$#]*)\.([A-Za-z0-9_\$#]{1,30})([A-Za-z0-9_\$#]*)(?=\.|@)</string>
+					<key>captures</key>
+					<dict>
+						<key>1</key>
+						<dict>
+							<key>name</key>
+							<string>entity.name.schema.sql</string>
+						</dict>
+						<key>2</key>
+						<dict>
+							<key>name</key>
+							<string>illegal.sql</string>
+						</dict>
+						<key>3</key>
+						<dict>
+							<key>name</key>
+							<string>entity.name.table.sql</string>
+						</dict>
+						<key>4</key>
+						<dict>
+							<key>name</key>
+							<string>illegal.sql</string>
+						</dict>
+					</dict>
+				</dict>
+
+				<dict> /* table */
+					<key>name</key>
+					<string>entity.name.table.sql</string>
+					<key>match</key>
+					<string>[A-Za-z0-9_\$#]{1,30}([A-Za-z0-9_\$#]*)(?=\.)</string>
+					<key>captures</key>
+					<dict>
+						<key>1</key>
+						<dict>
+							<key>name</key>
+							<string>illegal.sql</string>
+						</dict>
+					</dict>
+				</dict>
+
+				<dict> /* column */
+					<key>name</key>
+					<string>entity.name.column.sql</string>
+					<key>match</key>
+					<string>(?&lt;=\.)[A-Za-z0-9_\$#]{1,30}([A-Za-z0-9_\$#]*)( ("?)[A-Za-z0-9_\$\# ]+("?))</string>
+					<key>captures</key>
+					<dict>
+						<key>1</key>
+						<dict>
+							<key>name</key>
+							<string>illegal.sql</string>
+						</dict>
+						<key>2</key>
+						<dict>
+							<key>name</key>
+							<string>entity.name.column.alias.sql</string>
+						</dict>
+					</dict>
+				</dict>
+			</array>
+		</dict>
+
+		/* Strings */
+		<key>string_single_quotes</key>
+		<dict>
+			<key>name</key>
+			<string>string.quoted.single.perl</string>
+			<key>begin</key>
+			<string>'</string>
+			<key>end</key>
+			<string>'</string>
+			<key>captures</key>
+			<dict>
+				<key>0</key>
+				<dict>
+					<key>name</key>
+					<string>punctuation.string-definition.perl</string>
+				</dict>
+			</dict>
+		</dict>
+
+
+	</dict>
+
+</dict>
+</plist>
