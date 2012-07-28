@@ -1,0 +1,197 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>fileTypes</key>
+	<array>
+		<string>diff</string>
+		<string>patch</string>
+	</array>
+
+	<key>firstLineMatch</key>
+	<string>(?x)^
+			(===\ modified\ file
+			|==== \s* // .+ \s - \s .+ \s+ ====
+			|Index:[ ]
+			|---\ [^%]
+			|\*\*\*.*\d{4}\s*$
+			|\d+(,\d+)* (a|d|c) \d+(,\d+)* $
+			|diff\ --git[ ])
+	</string>
+
+	<key>foldingStartMarker</key>
+	<string>^\+\+\+</string>
+
+	<key>foldingStopMarker</key>
+	<string>^(---)?$</string>
+
+	<key>name</key>
+	<string>Diff</string>
+
+	<key>scopeName</key>
+	<string>source.diff</string>
+
+	<key>uuid</key>
+	<string>defc1afc-02f1-4b05-a8b3-705a33b45864</string>
+
+
+
+
+
+	/* Syntax Patterns
+	 * ================================== */
+	<key>patterns</key>
+	<array>
+
+
+		<dict> /* File Header */
+			<key>include</key>
+			<string>#file_header</string>
+		</dict>
+
+		<dict> /* Line numbers */
+			<key>include</key>
+			<string>#line_numbers</string>
+		</dict>
+
+		<dict> /* Content changes */
+			<key>patterns</key>
+			<array>
+				<dict>
+					<key>include</key>
+					<string>#insertions</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#deletions</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>modifications</string>
+				</dict>
+			</array>
+		</dict>
+
+	</array>
+
+
+
+
+
+	/* Repository
+	* ================================== */
+
+	<key>repository</key>
+	<dict>
+
+		/* Content changes */
+		<key>insertions</key>
+		<dict>
+			<key>name</key>
+			<string>markup.inserted.diff</string>
+			<key>match</key>
+			<string>^(&gt;|\+).*$</string>
+			<key>captures</key>
+			<dict>
+				<key>1</key>
+				<dict>
+					<key>name</key>
+					<string>punctuation.definition.inserted.diff</string>
+				</dict>
+			</dict>
+		</dict>
+
+		<key>deletions</key>
+		<dict>
+			<key>name</key>
+			<string>markup.deleted.diff</string>
+			<key>match</key>
+			<string>^(&lt;|-).*$</string>
+			<key>captures</key>
+			<dict>
+				<key>1</key>
+				<dict>
+					<key>name</key>
+					<string>punctuation.definition.deleted.diff</string>
+				</dict>
+			</dict>
+		</dict>
+
+		<key>modifications</key>
+		<dict>
+			<key>name</key>
+			<string>markup.modified.diff</string>
+			<key>match</key>
+			<string>^(!).*$</string>
+			<key>captures</key>
+			<dict>
+				<key>1</key>
+				<dict>
+					<key>name</key>
+					<string>punctuation.definition.modified.diff</string>
+				</dict>
+			</dict>
+		</dict>
+
+
+
+		/* File Header */
+		<key>file_header</key>
+		<dict>
+			<key>name</key>
+			<string>entity.name.header.diff</string>
+			<key>match</key>
+			<string>^==== (/([^ ]|\\ )+) - (/([^ ]|\\ )+) ====$</string>
+			<key>captures</key>
+			<dict>
+				<key>1</key>
+				<dict>
+					<key>name</key>
+					<string>entity.name.from-file.diff</string>
+				</dict>
+				<key>3</key>
+				<dict>
+					<key>name</key>
+					<string>entity.name.to-file.diff</string>
+				</dict>
+			</dict>
+		</dict>
+
+
+
+		/* Line numbers */
+		<key>line_numbers</key>
+		<dict>
+			<key>name</key>
+			<string>entity.other.range.diff</string>
+			<key>match</key>
+			<string>^(@@) -([0-9,]+) \+([0-9,]+) (@@)$</string>
+			<key>captures</key>
+			<dict>
+				<key>1</key>
+				<dict>
+					<key>name</key>
+					<string>punctuation.definition.range.diff</string>
+				</dict>
+				<key>2</key>
+				<dict>
+					<key>name</key>
+					<string>constant.numeric.diff</string>
+				</dict>
+				<key>3</key>
+				<dict>
+					<key>name</key>
+					<string>constant.numeric.diff</string>
+				</dict>
+				<key>4</key>
+				<dict>
+					<key>name</key>
+					<string>punctuation.definition.range.diff</string>
+				</dict>
+			</dict>
+		</dict>
+
+	</dict>
+
+</dict>
+</plist>

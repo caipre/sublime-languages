@@ -1,0 +1,273 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>fileTypes</key>
+	<array>
+		<string>json</string>
+		<string>sublime-settings</string>
+		<string>sublime-menu</string>
+		<string>sublime-keymap</string>
+		<string>sublime-mousemap</string>
+		<string>sublime-theme</string>
+		<string>sublime-build</string>
+		<string>sublime-project</string>
+		<string>sublime-completions</string>
+	</array>
+
+	<key>foldingStartMarker</key>
+	<string>(^\s*{\[$|\{\[\s*$)</string>
+
+	<key>foldingStopMarker</key>
+	<string>\]}</string>
+
+	<key>name</key>
+	<string>JSON</string>
+
+	<key>scopeName</key>
+	<string>source.json</string>
+
+	<key>uuid</key>
+	<string>f45a1595-51f8-45e9-8c5c-b4a2d176c5b6</string>
+
+
+
+
+
+	/* Syntax Patterns
+	 * ================================== */
+	<key>patterns</key>
+	<array>
+
+
+		<dict> /* Objects */
+			<key>include</key>
+			<string>#object</string>
+		</dict>
+
+
+		<dict> /* Arrays */
+			<key>include</key>
+			<string>#array</string>
+		</dict>
+
+
+		<dict> /* Strings */
+			<key>include</key>
+			<string>#string</string>
+		</dict>
+
+
+		<dict> /* Constants */
+			<key>include</key>
+			<string>#constants</string>
+		</dict>
+
+
+		<dict> /* Invalid */
+			<key>include</key>
+			<string>#invalid</string>
+		</dict>
+
+	</array>
+
+
+
+
+
+	/* Repository
+	* ================================== */
+
+	<key>repository</key>
+	<dict>
+
+		/* Arrays */
+		<key>array</key>
+		<dict>
+			<key>name</key>
+			<string>entity.name.array.json</string>
+			<key>begin</key>
+			<string>\[</string>
+			<key>end</key>
+			<string>\]</string>
+			<key>captures</key>
+			<dict>
+				<key>0</key>
+				<dict>
+					<key>name</key>
+					<string>punctuation.definition.array.json</string>
+				</dict>
+			</dict>
+			<key>patterns</key>
+			<array>
+				<dict>
+					<key>include</key>
+					<string>#values</string>
+				</dict>
+			</array>
+		</dict>
+
+
+
+		/* Constants */
+		<key>constants</key>
+		<dict>
+			<key>patterns</key>
+			<array>
+				<dict>
+					<key>include</key>
+					<string>#numbers</string>
+				</dict>
+
+				<dict>
+					<key>name</key>
+					<string>constant.boolean.json</string>
+					<key>match</key>
+					<string>(true|false)</string>
+				</dict>
+
+				<dict>
+					<key>name</key>
+					<string>constant.language.json</string>
+					<key>match</key>
+					<string>null</string>
+				</dict>
+			</array>
+		</dict>
+
+		<key>numbers</key>
+		<dict>
+			<key>patterns</key>
+			<array>
+				<dict>
+					<key>name</key>
+					<string>constant.numeric.json</string>
+					<key>match</key>
+					<string>\b-?\d+(.\d+)+([Ee][+-]?\d)?\b</string>
+				</dict>
+			</array>
+		</dict>
+
+
+
+		/* Escaped Characters */
+		<key>escaped_chars</key>
+		<dict>
+			<key>patterns</key>
+			<array>
+				<dict>
+					<key>name</key>
+					<string>constant.character.escape.json</string>
+					<key>match</key>
+					<string>\\(["\\/|bfnrt]|u[0-9A-Fa-f]{4})</string>
+				</dict>
+			</array>
+		</dict>
+
+
+
+		/* Invalid */
+		<key>invalid</key>
+		<dict>
+			<key>name</key>
+			<string>invalid.illegal.trailing-comma.json</string>
+			<key>begin</key>
+			<string>,</string>
+			<key>end</key>
+			<string>(\]|})$</string>
+		</dict>
+
+
+
+		/* Strings */
+		<key>string</key>
+		<dict>
+			<key>name</key>
+			<string>string.quoted.double.json</string>
+			<key>begin</key>
+			<string>"</string>
+			<key>end</key>
+			<string>"</string>
+			<key>captures</key>
+			<dict>
+				<key>0</key>
+				<dict>
+					<key>name</key>
+					<string>punctuation.definition.string.json</string>
+				</dict>
+			</dict>
+			<key>patterns</key>
+			<array>
+				<dict>
+					<key>include</key>
+					<string>#escaped_chars</string>
+				</dict>
+			</array>
+		</dict>
+
+
+
+		/* Objects */
+		<key>object</key>
+		<dict>
+			<key>name</key>
+			<string>entity.name.object.json</string>
+			<key>begin</key>
+			<string>{</string>
+			<key>end</key>
+			<string>}</string>
+			<key>captures</key>
+			<dict>
+				<key>0</key>
+				<dict>
+					<key>name</key>
+					<string>punctuation.definition.object.json</string>
+				</dict>
+			</dict>
+			<key>patterns</key>
+			<array>
+				<dict>
+					<key>include</key>
+					<string>#values</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#invalid</string>
+				</dict>
+			</array>
+		</dict>
+
+
+
+		/* Values */
+		<key>values</key>
+		<dict>
+			<key>patterns</key>
+			<array>
+				<dict>
+					<key>include</key>
+					<string>#constants</string>
+				</dict>
+
+				<dict>
+					<key>include</key>
+					<string>#array</string>
+				</dict>
+
+				<dict>
+					<key>include</key>
+					<string>#object</string>
+				</dict>
+
+				<dict>
+					<key>include</key>
+					<string>#string</string>
+				</dict>
+
+			</array>
+		</dict>
+
+	</dict>
+
+</dict>
+</plist>
