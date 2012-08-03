@@ -14,14 +14,24 @@ language definitions. Unfortunately, the specification is vague and in some inst
 where necessary, I will use my best judgment. The goal is to be readable, complete, and flexible.
 [1]: http://manual.macromates.com/en/language_grammars "Textmate language grammars"
 
-__Available languages:__ Fountain, Perl, SQL
+__Available languages:__ Diff, HDL, Fountain, JSON, Perl, SQL
 
-__Planned languages:__ HTML, XML, CSS, Javascript, JSON, Bash (Shellscript), Diff, Python
+__Planned languages:__ HTML, XML, CSS, Javascript, Bash (Shellscript), Python
 
-Language Features
------------------
+Language Notes
+--------------
+### Diff
+* Supports most features of default file
+
+### HDL
+* Basic keyword and comment support
+
 ### Fountain
 * Complete support for syntax [as defined](http://fountain.io/syntax) on 2012-02-07.
+
+### JSON
+* Complete support for syntax [as defined](http://json.org)
+* Supports most features of default file; syntax validation in progress
 
 ### Perl
 * Named scopes for all [special variables](http://perldoc.perl.org/perlvar.html) under `variable.other.special`
@@ -30,6 +40,7 @@ Language Features
 
 ### SQL
 * Named scopes for schema, table, column
+* named scopes for SQL functions, by type (aggregate, data-manipulation, operator)
 
 Conventions
 -----------
