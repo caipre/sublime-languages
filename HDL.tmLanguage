@@ -1,0 +1,152 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>fileTypes</key>
+	<array>
+		<string>hdl</string>
+	</array>
+
+	<key>foldingStartMarker</key>
+	<string>(/\*|{)</string>
+
+	<key>foldingStopMarker</key>
+	<string>(\*/|})</string>
+
+	<key>name</key>
+	<string>HDL</string>
+
+	<key>scopeName</key>
+	<string>source.hdl</string>
+
+	<key>uuid</key>
+	<string>c418abf8-d9ca-4aae-9d58-1584410ab002</string>
+
+
+
+
+
+	/* Syntax Patterns
+	 * ================================== */
+	<key>patterns</key>
+	<array>
+
+		<dict> /* Keywords */
+			<key>include</key>
+			<string>#keywords</string>
+		</dict>
+
+		<dict> /* Chip Parts */
+			<key>include</key>
+			<string>#parts</string>
+		</dict>
+
+		<dict> /* Comments */
+			<key>include</key>
+			<string>#comments</string>
+		</dict>
+
+	</array>
+
+
+
+
+
+	/* Repository
+	* ================================== */
+
+	<key>repository</key>
+	<dict>
+
+		/* Comments */
+		<key>comments</key>
+		<dict>
+			<key>patterns</key>
+			<array>
+				<dict>
+					<key>include</key>
+					<string>#line_comments</string>
+				</dict>
+
+				<dict>
+					<key>include</key>
+					<string>#block_comments</string>
+				</dict>
+			</array>
+		</dict>
+
+		<key>line_comments</key>
+		<dict>
+			<key>patterns</key>
+			<array>
+				<dict>
+					<key>name</key>
+					<string>comment.line.double-slash.perl</string>
+					<key>match</key>
+					<string>//.*$</string>
+				</dict>
+			</array>
+		</dict>
+
+		<key>block_comments</key>
+		<dict>
+			<key>patterns</key>
+			<array>
+				<dict>
+					<key>name</key>
+					<string>comment.block.documentation.hdl</string>
+					<key>begin</key>
+					<string>/\*\*</string>
+					<key>end</key>
+					<string>\*/</string>
+				</dict>
+
+				<dict>
+					<key>name</key>
+					<string>comment.block.hdl</string>
+					<key>begin</key>
+					<string>/\*</string>
+					<key>end</key>
+					<string>\*/</string>
+				</dict>
+			</array>
+		</dict>
+
+
+
+		/* Chip Parts */
+		<key>parts</key>
+		<dict>
+			<key>patterns</key>
+			<array>
+				<dict>
+					<key>name</key>
+					<string>support.other.chip.hdl</string>
+					<key>match</key>
+					<string>[A-Z][A-Za-z_]+(?=\s*\()</string>
+				</dict>
+
+				<dict>
+					<key>name</key>
+					<string>keyword.other.hdl</string>
+					<key>match</key>
+					<string>(?&lt;=CHIP )[A-Za-z_]*</string>
+				</dict>
+			</array>
+		</dict>
+
+
+
+		/* Keywords */
+		<key>keywords</key>
+		<dict>
+			<key>name</key>
+			<string>keyword.other.hdl</string>
+			<key>match</key>
+			<string>(CHIP|IN|OUT|PARTS:)</string>
+		</dict>
+
+	</dict>
+
+</dict>
+</plist>
