@@ -463,14 +463,6 @@
 					<string>(chomp|chop|chr|crypt|defined|hex|index|lc|lcfirst|length|oct|ord|pack|reset|reverse|rindex|sprintf|substr|uc|ucfirst|vec)</string>
 				</dict>
 
-				<dict> /* regexp */
-					<key>name</key>
-					<string>keyword.function.regexp.perl</string>
-					<key>match</key>
-					<string>(m|pos|qr|quotemeta|s|split|study)</string>
-				</dict>
-
-
 				<dict> /* numeric */
 					<key>name</key>
 					<string>keyword.function.numeric.perl</string>
@@ -629,6 +621,13 @@
 					<string>keyword.other.system.perl</string>
 					<key>match</key>
 					<string>(ARGV|DATA|ENV|SIG|STDERR|STDIN|STDOUT)</string>
+				</dict>
+
+				<dict> /* regexp */
+					<key>name</key>
+					<string>keyword.function.regexp.perl</string>
+					<key>match</key>
+					<string>(m|pos|qr|quotemeta|s|split|study)</string>
 				</dict>
 			</array>
 		</dict>
