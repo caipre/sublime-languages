@@ -147,12 +147,12 @@
 				<key>1</key>
 				<dict>
 					<key>name</key>
-					<string>entity.name.from-file.diff</string>
+					<string>entity.name.from-file.diff, meta.diff.header.from-file</string>
 				</dict>
 				<key>3</key>
 				<dict>
 					<key>name</key>
-					<string>entity.name.to-file.diff</string>
+					<string>entity.name.to-file.diff, meta.diff.header.to-file</string>
 				</dict>
 			</dict>
 		</dict>
