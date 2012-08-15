@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>fileTypes</key>
+	<array>
+		<string>asm</string>
+		<string>hack</string>
+	</array>
+
+	<key>name</key>
+	<string>Hack</string>
+
+	<key>scopeName</key>
+	<string>source.hack</string>
+
+	<key>uuid</key>
+	<string>1f2e63e7-cbbd-4ba9-b1b1-a5ea39c6c061</string>
+
+
+
+
+
+	/* Syntax Patterns
+	 * ================================== */
+	<key>patterns</key>
+	<array>
+
+		<dict> /* Keywords */
+			<key>include</key>
+			<string>#keywords</string>
+		</dict>
+
+		<dict> /* Symbols */
+			<key>include</key>
+			<string>#symbols</string>
+		</dict>
+
+
+		<dict> /* Comments */
+			<key>include</key>
+			<string>#comments</string>
+		</dict>
+
+	</array>
+
+
+
+
+
+	/* Repository
+	* ================================== */
+
+	<key>repository</key>
+	<dict>
+
+		/* Comments */
+		<key>comments</key>
+		<dict>
+			<key>name</key>
+			<string>comment.line.double-slash.hack</string>
+			<key>match</key>
+			<string>//.*$</string>
+		</dict>
+
+
+
+		/* Keyword */
+		<key>keywords</key>
+		<dict>
+			<key>patterns</key>
+			<array>
+				<dict>
+					<key>name</key>
+					<string>keyword.other.virtual-register.hack</string>
+					<key>match</key>
+					<string>@R([0-9]|1[0-4])</string>
+				</dict>
+
+				<dict>
+					<key>name</key>
+					<string>keyword.other.predefined-pointer.hack</string>
+					<key>match</key>
+					<string>@(SP|LCL|ARG|THIS|THAT)</string>
+				</dict>
+
+				<dict>
+					<key>name</key>
+					<string>keyword.other.io-pointer.hack</string>
+					<key>match</key>
+					<string>@(SCREEN|KBD)</string>
+				</dict>
+			</array>
+		</dict>
+
+
+
+		/* Symbols */
+		<key>symbols</key>
+		<dict>
+			<key>patterns</key>
+			<array>
+				<dict>
+					<key>name</key>
+					<string>entity.name.label.hack</string>
+					<key>match</key>
+					<string>\([A-Za-z0-9_.$:]+\)</string>
+				</dict>
+
+				<dict>
+					<key>name</key>
+					<string>constant.numeric.hack</string>
+					<key>match</key>
+					<string>@[0-9]+</string>
+				</dict>
+
+				<dict>
+					<key>name</key>
+					<string>variable.other.label.hack</string>
+					<key>match</key>
+					<string>@[A-Z]+</string>
+				</dict>
+
+				<dict>
+					<key>name</key>
+					<string>variable.other.pointer.hack</string>
+					<key>match</key>
+					<string>@[A-Za-z0-9_.$:]+</string>
+				</dict>
+			</array>
+		</dict>
+
+	</dict>
+
+</dict>
+</plist>

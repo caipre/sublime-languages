@@ -96,7 +96,7 @@
 					<key>name</key>
 					<string>comment.block.documentation.hdl</string>
 					<key>begin</key>
-					<string>/\*\*</string>
+					<string>/\*\*(?!/)</string>
 					<key>end</key>
 					<string>\*/</string>
 				</dict>
@@ -120,17 +120,45 @@
 			<key>patterns</key>
 			<array>
 				<dict>
-					<key>name</key>
-					<string>support.other.chip.hdl</string>
-					<key>match</key>
-					<string>[A-Z][A-Za-z_]+(?=\s*\()</string>
+					<key>begin</key>
+					<string>^\s*(?!CHIP|IN|OUT|PARTS:)([A-Z][A-Za-z0-9]+)</string>
+					<key>end</key>
+					<string>(?=\s*\()</string>
+					<key>beginCaptures</key>
+					<dict>
+						<key>1</key>
+						<dict>
+							<key>name</key>
+							<string>support.other.chip.hdl</string>
+						</dict>
+					</dict>
 				</dict>
 
 				<dict>
 					<key>name</key>
-					<string>keyword.other.hdl</string>
+					<string>entity.name.other.chip.hdl</string>
 					<key>match</key>
-					<string>(?&lt;=CHIP )[A-Za-z_]*</string>
+					<string>(?&lt;=CHIP )[A-Za-z0-9]*</string>
+				</dict>
+
+				<dict>
+					<key>name</key>
+					<string>constant.other.pin.hdl</string>
+					<key>match</key>
+					<string>[A-Za-z]+(?=\s*=)</string>
+				</dict>
+
+				<dict>
+					<key>match</key>
+					<string>(?&lt;=\=)\s*([A-Za-z0-9]+)</string>
+					<key>captures</key>
+					<dict>
+						<key>1</key>
+						<dict>
+							<key>name</key>
+							<string>variable.other.wire.hdl</string>
+						</dict>
+					</dict>
 				</dict>
 			</array>
 		</dict>
