@@ -815,9 +815,16 @@
 					<key>name</key>
 					<string>string.regexp.replace.perl</string>
 					<key>begin</key>
-					<string>\b(s)\s*([^A-Za-z0-9\{\[\(&lt;])(?:[^\\]|\\.)*?(\2)</string>
+					<string>\b(s)\s*([^A-Za-z0-9\{\[\(&lt;])(?:\\.|[^\\])*?(\2)</string>
 					<key>end</key>
 					<string>(\2)[egimosrasdlx]*</string>
+					<key>patterns</key>
+					<array>
+						<dict>
+							<key>include</key>
+							<string>#escaped_chars</string>
+						</dict>
+					</array>
 				</dict>
 			</array>
 		</dict>
@@ -837,12 +844,7 @@
 					<array>
 						<dict>
 							<key>include</key>
-							<string>#escaped_char</string>
-						</dict>
-
-						<dict>
-							<key>include</key>
-							<string>#bareword</string>
+							<string>#escaped_chars</string>
 						</dict>
 
 						<dict>
@@ -869,12 +871,7 @@
 					<array>
 						<dict>
 							<key>include</key>
-							<string>#escaped_char</string>
-						</dict>
-
-						<dict>
-							<key>include</key>
-							<string>#bareword</string>
+							<string>#escaped_chars</string>
 						</dict>
 
 						<dict>
@@ -1070,11 +1067,6 @@
 				<dict>
 					<key>include</key>
 					<string>#escaped_chars</string>
-				</dict>
-
-				<dict>
-					<key>include</key>
-					<string>#barewords</string>
 				</dict>
 
 				<dict>
