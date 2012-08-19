@@ -14,40 +14,47 @@ language definitions. Unfortunately, the specification is vague and in some inst
 where necessary, I will use my best judgment. The goal is to be readable, complete, and flexible.
 [1]: http://manual.macromates.com/en/language_grammars "Textmate language grammars"
 
-__Available languages:__ Diff, HDL, Fountain, JSON, Perl, SQL
+__Available languages:__ Diff, Fountain, HDL, .hack, JSON, Perl, SQL
 
-__Planned languages:__ HTML, XML, CSS, Javascript, Bash (Shellscript), Python
+__Planned languages:__ HTML, XML, CSS, Javascript, Bash (Shellscript), Python, C
+
+Installation
+------------
+Download the language file you want to use and place it in your Packages/User directory. The language will be available under *User -&gt; &lt;lang&gt;*
+
+You may wish to overwrite the default language file, to avoid confusion resulting from identically named language definitions. Doing so also gives you access to any language-specific snippets kept in the `Packages/<lang>` folder. However, bear in mind that the custom files will be overwritten when updating Sublime.
 
 Language Notes
 --------------
 ### Diff
-* Supports most features of default file
+* Support for most features of default file
 
-### HDL
-* Basic keyword and comment support
+### HDL, .hack
+* Basic keyword and comment support (ongoing)
 
 ### Fountain
 * Complete support for syntax [as defined](http://fountain.io/syntax) on 2012-02-07.
 
 ### JSON
 * Complete support for syntax [as defined](http://json.org)
-* Supports most features of default file; syntax validation in progress
+* Support for most features of default file (ongoing)
 
 ### Perl
 * Named scopes for all [special variables](http://perldoc.perl.org/perlvar.html) under `variable.other.special`
-* Distinct scopes for scalars, arrays, hashes under `variable.other.{scalar,array,hash}.perl`
-* Proper handing of complex regular expressions (in progress)
+* Named scopes for many different [categories of functions](http://perldoc.perl.org/index-functions-by-cat.html) under `keyword.function`
+* Named scopes for scalars, arrays, hashes under `variable.other.{scalar,array,hash}.perl`
+* Proper handling of complex syntax (heredoc, single-quote package delimiter, regular expressions) (ongoing)
 
 ### SQL
-* Named scopes for schema, table, column
-* named scopes for SQL functions, by type (aggregate, data-manipulation, operator)
+* Named scopes for schema, table, column, column alias
+* named scopes for SQL functions, by category (aggregate, data-manipulation, operator)
 
 Conventions
 -----------
 * The files should be written in XML Plist format. The extra regex-escaping required in other markup
   formats (eg, JSON) goes against the objectives of clarity and readability (though the syntax is
   more concise).
-* When defining patterns, `<dict>` necessary keys should always appear in the following order:
+* When defining patterns, necessary `<dict>` keys should always appear in the following order:
     * name *or* contentName
     * match
     * begin
