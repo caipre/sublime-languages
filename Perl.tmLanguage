@@ -1964,18 +1964,50 @@
 					<key>name</key>
 					<string>string.quoted.single.heredoc.perl</string>
 					<key>begin</key>
-					<string>&lt;&lt;\s*'([^']+)'</string>
+					<string>&lt;&lt;\s*'((\\'|[^'])+)'(?=.*;$\n)</string>
 					<key>end</key>
 					<string>^(\1)$</string>
+					<key>patterns</key>
+					<array>
+						<dict>
+							<key>begin</key>
+							<string>(?&lt;=')(?=(\\'|[^'])+;$\n)</string>
+							<key>end</key>
+							<string>;$\n</string>
+							<key>patterns</key>
+							<array>
+								<dict>
+									<key>include</key>
+									<string>$self</string>
+								</dict>
+							</array>
+						</dict>
+					</array>
 				</dict>
 
 				<dict>
 					<key>name</key>
 					<string>string.unquoted.heredoc.perl</string>
 					<key>begin</key>
-					<string>&lt;&lt;\s*([^"' ]+)\s*$</string>
+					<string>&lt;&lt;\s*((\\["']|[^"' ])+)(?=.*$\n)</string>
 					<key>end</key>
 					<string>^(\1)$</string>
+					<key>patterns</key>
+					<array>
+						<dict>
+							<key>begin</key>
+							<string>(?&lt;=.)(?=.+;$\n)</string>
+							<key>end</key>
+							<string>;$\n</string>
+							<key>patterns</key>
+							<array>
+								<dict>
+									<key>include</key>
+									<string>$self</string>
+								</dict>
+							</array>
+						</dict>
+					</array>
 				</dict>
 			</array>
 		</dict>
