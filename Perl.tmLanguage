@@ -34,29 +34,8 @@
 	<array>
 
 		<dict> /* Regular Expression Operators */
-			<key>patterns</key>
-			<array>
-				<dict>
-					<key>include</key>
-					<string>#regexp_find</string>
-				</dict>
-				<dict>
-					<key>include</key>
-					<string>#regexp_replace</string>
-				</dict>
-				<dict>
-					<key>include</key>
-					<string>#regexp_compile</string>
-				</dict>
-				<dict>
-					<key>include</key>
-					<string>#regexp_execute</string>
-				</dict>
-				<dict>
-					<key>include</key>
-					<string>#regexp_transliterate</string>
-				</dict>
-			</array>
+			<key>include</key>
+			<string>#regexp_operators</string>
 		</dict>
 
 		<dict> /* Comments */
@@ -65,25 +44,8 @@
 		</dict>
 
 		<dict> /* Quote-like Operators */
-			<key>patterns</key>
-			<array>
-				<dict>
-					<key>include</key>
-					<string>#quote_words</string>
-				</dict>
-				<dict>
-					<key>include</key>
-					<string>#quote_double</string>
-				</dict>
-				<dict>
-					<key>include</key>
-					<string>#quote_single</string>
-				</dict>
-				<dict>
-					<key>include</key>
-					<string>#quote_heredoc</string>
-				</dict>
-			</array>
+			<key>include</key>
+			<string>#quote_operators</string>
 		</dict>
 
 		<dict> /* Keywords */
@@ -91,23 +53,14 @@
 			<string>#keywords</string>
 		</dict>
 
-		<dict> /* Functions */
+		<dict> /* Functions, packages */
 			<key>include</key>
 			<string>#functions</string>
 		</dict>
 
 		<dict> /* Strings */
-			<key>patterns</key>
-			<array>
-				<dict>
-					<key>include</key>
-					<string>#string_double_quotes</string>
-				</dict>
-				<dict>
-					<key>include</key>
-					<string>#string_single_quotes</string>
-				</dict>
-			</array>
+			<key>include</key>
+			<string>#strings</string>
 		</dict>
 
 		<dict> /* Variables */
@@ -348,7 +301,7 @@
 
 
 
-		/* Functions (subroutines) */
+		/* Functions (subroutines) and packages (modules) */
 		<key>functions</key>
 		<dict>
 			<key>patterns</key>
@@ -361,6 +314,11 @@
 				<dict>
 					<key>include</key>
 					<string>#function_calls</string>
+				</dict>
+
+				<dict>
+					<key>include</key>
+					<string>#packages</string>
 				</dict>
 			</array>
 		</dict>
@@ -445,6 +403,19 @@
 							<string>support.function.call.perl</string>
 						</dict>
 					</dict>
+				</dict>
+			</array>
+		</dict>
+
+		<key>packages</key>
+		<dict>
+			<key>patterns</key>
+			<array>
+				<dict>
+					<key>name</key>
+					<string>support.module.perl</string>
+					<key>match</key>
+					<string>(\$(::|'))?([A-Za-z0-9_]+(::|'))+</string>
 				</dict>
 			</array>
 		</dict>
@@ -635,6 +606,33 @@
 
 
 		/* Regular Expression Operators */
+		<key>regexp_operators</key>
+		<dict>
+			<key>patterns</key>
+			<array>
+				<dict>
+					<key>include</key>
+					<string>#regexp_find</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#regexp_replace</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#regexp_compile</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#regexp_execute</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#regexp_transliterate</string>
+				</dict>
+			</array>
+		</dict>
+
 		<key>regexp_find</key>
 		<dict>
 			<key>patterns</key>
@@ -650,7 +648,7 @@
 					<array>
 						<dict>
 							/* The sequence $? is a special variable, but the $ word
-							   anchor should take precedence at the end of the regex */
+							   anchor should take precedence at the end of the regexp */
 							<key>match</key>
 							<string>(\$(?=\?[ \);]))</string>
 						</dict>
@@ -678,7 +676,7 @@
 					<array>
 						<dict>
 							/* The sequence $/ is a special variable, but the $ word
-							   anchor should take precedence at the end of the regex */
+							   anchor should take precedence at the end of the regexp */
 							<key>match</key>
 							<string>\$(?=/[cgimosx]*[ \);])</string>
 						</dict>
@@ -706,7 +704,7 @@
 					<array>
 						<dict>
 							/* The sequence $. may be a special variable, but the $ word
-							   anchor should take precedence at the end of the regex */
+							   anchor should take precedence at the end of the regexp */
 							<key>match</key>
 							<string>\$(?=.[cgimosx]*[ \);])</string>
 						</dict>
@@ -809,7 +807,6 @@
 			</array>
 		</dict>
 
-
 		<key>regexp_replace</key>
 		<dict>
 			<key>patterns</key>
@@ -824,7 +821,6 @@
 				</dict>
 			</array>
 		</dict>
-
 
 		<key>regexp_compile</key>
 		<dict>
@@ -858,7 +854,6 @@
 			</array>
 		</dict>
 
-
 		<key>regexp_execute</key>
 		<dict>
 			<key>patterns</key>
@@ -890,7 +885,6 @@
 				</dict>
 			</array>
 		</dict>
-
 
 		<key>regexp_transliterate</key>
 		<dict>
@@ -1040,6 +1034,21 @@
 
 
 		/* Strings */
+		<key>strings</key>
+		<dict>
+			<key>patterns</key>
+			<array>
+				<dict>
+					<key>include</key>
+					<string>#string_double_quotes</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#string_single_quotes</string>
+				</dict>
+			</array>
+		</dict>
+
 		<key>string_double_quotes</key>
 		<dict>
 			<key>name</key>
@@ -1099,6 +1108,7 @@
 				</dict>
 			</array>
 		</dict>
+
 
 
 		/* Nested Punctuation Characters */
@@ -1163,7 +1173,6 @@
 			</array>
 		</dict>
 
-
 		<key>nested_brackets</key>
 		<dict>
 			<key>begin</key>
@@ -1225,7 +1234,6 @@
 			</array>
 		</dict>
 
-
 		<key>nested_braces</key>
 		<dict>
 			<key>begin</key>
@@ -1286,7 +1294,6 @@
 				</dict>
 			</array>
 		</dict>
-
 
 		<key>nested_angle_brackets</key>
 		<dict>
@@ -1352,6 +1359,29 @@
 
 
 		/* Quote-like Operators */
+		<key>quote_operators</key>
+		<dict>
+			<key>patterns</key>
+			<array>
+				<dict>
+					<key>include</key>
+					<string>#quote_words</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#quote_double</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#quote_single</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#quote_heredoc</string>
+				</dict>
+			</array>
+		</dict>
+
 		<key>quote_words</key>
 		<dict>
 			<key>patterns</key>
@@ -2021,12 +2051,12 @@
 			<array>
 				<dict>
 					<key>include</key>
-					<string>#special</string>
+					<string>#scalar</string>
 				</dict>
 
 				<dict>
 					<key>include</key>
-					<string>#scalar</string>
+					<string>#special</string>
 				</dict>
 
 				<dict>
@@ -2070,14 +2100,14 @@
 					<key>name</key>
 					<string>variable.other.scalar.perl</string>
 					<key>match</key>
-					<string>\$#?(?:[A-Za-z0-9_]|::)+</string>
+					<string>\$#?(?:[A-Za-z0-9_]|::|')+</string>
 				</dict>
 
 				<dict> /* scalar, in braces */
 					<key>name</key>
 					<string>variable.other.scalar.perl</string>
 					<key>match</key>
-					<string>\$#?(\{)(?:[A-Za-z0-9_]|::)+(\})</string>
+					<string>\$#?(\{)(?:[A-Za-z0-9_]|::|')+(\})</string>
 					<key>captures</key>
 					<dict>
 						<key>1</key>
@@ -2168,7 +2198,7 @@
 
 				<dict> /* array from scalar */
 					<key>match</key>
-					<string>(@)\s*(\$(?:[A-Za-z0-9_]|::)+)</string>
+					<string>(@)\s*(\$(?:[A-Za-z0-9_]|::|')+)</string>
 					<key>captures</key>
 					<dict>
 						<key>1</key>
@@ -2186,7 +2216,7 @@
 
 				<dict> /* array from scalar (scalar in braces) */
 					<key>match</key>
-					<string>(@)\s*(\$(\{)(?:[A-Za-z0-9_]|::)+(\}))</string>
+					<string>(@)\s*(\$(\{)(?:[A-Za-z0-9_]|::|')+(\}))</string>
 					<key>captures</key>
 					<dict>
 						<key>1</key>
@@ -2333,7 +2363,7 @@
 
 				<dict> /* hash from scalar */
 					<key>match</key>
-					<string>(%)\s*(\$(?:[A-Za-z0-9_]|::)+)</string>
+					<string>(%)\s*(\$(?:[A-Za-z0-9_]|::|')+)</string>
 					<key>captures</key>
 					<dict>
 						<key>1</key>
@@ -2351,7 +2381,7 @@
 
 				<dict> /* hash from scalar (scalar in braces) */
 					<key>match</key>
-					<string>(%)\s*(\$(\{)(?:[A-Za-z0-9_]|::)+)(\})</string>
+					<string>(%)\s*(\$(\{)(?:[A-Za-z0-9_]|::|')+)(\})</string>
 					<key>captures</key>
 					<dict>
 						<key>1</key>
@@ -2470,6 +2500,11 @@
 					<string>\}</string>
 					<key>patterns</key>
 					<array>
+						<dict>
+							<key>include</key>
+							<string>#strings</string>
+						</dict>
+
 						<dict>
 							<key>include</key>
 							<string>#barewords</string>
@@ -2803,7 +2838,7 @@
 
 				<dict>
 					<key>name</key>
-					<string>variable.other.special.last-regex-result.perl</string>
+					<string>variable.other.special.last-regexp-result.perl</string>
 					<key>match</key>
 					<string>(\$LAST_REGEXP_CODE_RESULT|\$\^R)</string>
 				</dict>
