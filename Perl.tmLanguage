@@ -820,7 +820,7 @@
 					<key>begin</key>
 					<string>\b(s)\s*([^A-Za-z0-9\{\[\(&lt;])(?:[^\\]|\\.)*?(\2)</string>
 					<key>end</key>
-					<string>(\2)[egimosx]*</string>
+					<string>(\2)[egimosrasdlx]*</string>
 				</dict>
 			</array>
 		</dict>
@@ -900,7 +900,7 @@
 					<key>contentName</key>
 					<string>string.regexp.compile.tr.perl</string>
 					<key>begin</key>
-					<string>\b(tr)(?=\s*([^A-Za-z0-9\s\{\[\(&lt;]).*\2([egimos]*)([\)\};,]|\s+))</string>
+					<string>\b(tr)(?=\s*([^A-Za-z0-9\s\{\[\(&lt;]).*\2([egimosrasdl]*)([\)\};,]|\s+))</string>
 					<key>beginCaptures</key>
 					<dict>
 						<key>1</key>
@@ -915,7 +915,7 @@
 						</dict>
 					</dict>
 					<key>end</key>
-					<string>(([egimosx]*)(?=([\)\};,]|\s+|$)))</string>
+					<string>(([egimosrasdlx]*)(?=([\)\};,]|\s+|$)))</string>
 					<key>endCaptures</key>
 					<dict>
 						<key>1</key>
