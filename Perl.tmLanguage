@@ -671,7 +671,7 @@
 							/* The sequence $? is a special variable, but the $ word
 							   anchor should take precedence at the end of the regexp */
 							<key>match</key>
-							<string>(\$(?=\?[ \);]))</string>
+							<string>(\$(?=\?[ \);,]))</string>
 						</dict>
 
 						<dict>
@@ -699,7 +699,7 @@
 							/* The sequence $/ is a special variable, but the $ word
 							   anchor should take precedence at the end of the regexp */
 							<key>match</key>
-							<string>\$(?=/[cgimosx]*[ \);])</string>
+							<string>\$(?=/[cgimosx]*[ \);,])</string>
 						</dict>
 
 						<dict>
@@ -727,7 +727,7 @@
 							/* The sequence $. may be a special variable, but the $ word
 							   anchor should take precedence at the end of the regexp */
 							<key>match</key>
-							<string>\$(?=.[cgimosx]*[ \);])</string>
+							<string>\$(?=.[cgimosx]*[ \);,])</string>
 						</dict>
 
 						<dict>
