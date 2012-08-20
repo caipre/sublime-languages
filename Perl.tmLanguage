@@ -415,7 +415,28 @@
 					<key>name</key>
 					<string>support.module.perl</string>
 					<key>match</key>
-					<string>(\$(::|'))?([A-Za-z0-9_]+(::|'))+</string>
+					<string>([\$@%](::|')?)?([A-Za-z0-9_]+(::|'))+([A-Za-z0-9_]+)</string>
+				</dict>
+
+				<dict>
+					<key>name</key>
+					<string>support.module.perl</string>
+					<key>match</key>
+					<string>(?&lt;=package )([A-Za-z0-9_]+)</string>
+				</dict>
+
+				<dict>
+					<key>name</key>
+					<string>support.module.perl</string>
+					<key>match</key>
+					<string>(?&lt;=use )([A-Za-z0-9_]+)</string>
+				</dict>
+
+				<dict>
+					<key>name</key>
+					<string>support.module.perl</string>
+					<key>match</key>
+					<string>(?&lt;=require )([A-Za-z0-9_]+)</string>
 				</dict>
 			</array>
 		</dict>
