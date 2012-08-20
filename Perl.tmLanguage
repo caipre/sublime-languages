@@ -522,7 +522,7 @@
 					<key>name</key>
 					<string>keyword.other.module.perl</string>
 					<key>match</key>
-					<string>\b(do|import|no|package|require|use)\b</string>
+					<string>\b(BEGIN|CHECK|do|END|import|INIT|no|package|require|UNITCHECK|use)\b</string>
 				</dict>
 
 				<dict> /* for classes/OOP */
