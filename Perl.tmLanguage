@@ -452,7 +452,7 @@
 					<key>name</key>
 					<string>keyword.function.scalar.perl</string>
 					<key>match</key>
-					<string>\b(chomp|chop|chr|crypt|defined|hex|index|lc|lcfirst|length|oct|ord|pack|reset|reverse|rindex|sprintf|substr|uc|ucfirst|undef|vec)\b</string>
+					<string>\b(chomp|chop|chr|crypt|defined|hex|index|lc|lcfirst|length|oct|ord|pack|reset|reverse|rindex|scalar|sprintf|substr|uc|ucfirst|undef|vec)\b</string>
 				</dict>
 
 				<dict> /* numeric */
